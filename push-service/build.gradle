@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.push'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //JSON
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+
+
+    //OKHttp
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+
+    // spring-boot-starter-jdbc
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.0.RELEASE'
+}

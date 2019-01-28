@@ -6,6 +6,8 @@
       <module name="book-service_test" target="1.8" />
       <module name="information-service_main" target="1.8" />
       <module name="information-service_test" target="1.8" />
+      <module name="push-service_main" target="1.8" />
+      <module name="push-service_test" target="1.8" />
       <module name="survey-service_main" target="1.8" />
       <module name="survey-service_test" target="1.8" />
       <module name="SurveyPush-Service_main" target="1.8" />
