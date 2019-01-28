@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-survey-push
+  labels:
+    app: restaurant
+data:
+  term-day: 5
+  term-hour: -1

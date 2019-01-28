@@ -1,0 +1,25 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: schedule-surveypush
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: schedule
+            image: lms8147/lms8147/restaurant-survey-push-service:0.3
+            env:
+            - name: TERM_DAY
+              valueFrom:
+                configMapKeyRef:
+                  name: config-survey-push
+                  key: term-day
+            - name: TERM_HOUR
+              valueFrom:
+                configMapKeyRef:
+                  name: config-survey-push
+                  key: term-hour
+          restartPolicy: OnFailure

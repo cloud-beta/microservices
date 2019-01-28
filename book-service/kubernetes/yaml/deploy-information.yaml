@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: book-service
+  labels:
+    app: restaurant
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: restaurant
+        tier: book-service
+    spec:
+      containers:
+        - image: lms8147/restaurant-book-service:0.3
+          imagePullPolicy: Always
+          name: book-service
+          ports:
+            - containerPort: 8080
+          env:
+          - name: DB_HOSTINFO
+            valueFrom:
+              configMapKeyRef:
+                name: db-book
+                key: hostinfo
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-book
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-book
+                key: password

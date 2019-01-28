@@ -30,16 +30,16 @@ class PersistenceContext {
     @Bean
     public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-
+/*
         String hostinfo = System.getenv("DB_HOSTINFO");
         String username = System.getenv("DB_USERNAME");
         String password = System.getenv("DB_PASSWORD");
+*/
 
-/*
-        String hostinfo = "210.108.48.235:3306/restaurant";
+        String hostinfo = "210.108.48.235:3306/book";
         String username = "root";
         String password = "It12345!1";
-*/
+
 
         dataSourceBuilder.url("jdbc:mariadb://"+hostinfo+"?useUnicode=true");
         dataSourceBuilder.username(username);
