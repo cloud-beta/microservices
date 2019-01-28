@@ -15,13 +15,15 @@ import android.support.v4.app.NotificationCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.example.user.pushapp.constant.ServerUrls;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.RequestBody;
+import okhttp3.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -33,19 +35,49 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      */
     @Override
     public void onNewToken(String token) {
-        //핸드폰 번호 가져 오기
-        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        String phoneNum = "";
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            phoneNum = telephonyManager.getLine1Number();
-        }
-
-        sendRegistrationToServer(token, phoneNum);
+        sendRegistrationToServer(token);
     }
 
-    private void sendRegistrationToServer(String token, String phoneNum) {
-        // Send Token to Server
+    /**
+     * onNewToken으로 부터 받은 Token 값과 Phone Num을 Server로 보내는 메소드
+     * @param token
+     */
+    private void sendRegistrationToServer(String token) {
+        //핸드폰 번호 가져 오기
+        String phoneNum = getPhoneNumber();
+
+        // 서버로 토큰과 번호 보내기
+        OkHttpClient client = new OkHttpClient();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("phone",phoneNum);
+            jsonObject.put("token",token);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),jsonObject.toString());
+
+        Request request = new Request.Builder()
+                .url(ServerUrls.PUSHSERVER_URL + "/token")
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("@@@@@@@@ERROR", e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if(response.isSuccessful())
+                    Log.d("@@@@@@@@@@SUCCESS", response.body().string());
+                else
+                    Log.d("@@@@@@@@@@@onResponse" , response.body().string());
+            }
+        });
     }
 
     /**
@@ -53,7 +85,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        String context = remoteMessage.getData().get("data");
+        String context = remoteMessage.getData().get("message");
         // FCM서버로 부터 수신한 메시지중 data라는 키를 가진 값을 꺼내어 메소드로 파라미터로 넘겨준다
         sendNotification(context);
     }
@@ -61,7 +93,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     /**
      * Android 핸드폰에 알림을 띄워주는 메소드
      *
-    */
+     */
     private void sendNotification(String data) {
         Uri uri = Uri.parse("https://www.naver.com");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -92,5 +124,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         notificationManager.notify(0, notificationBuilder.build());
+    }
+
+    /**
+     * 디바이스의 전화번호를 받아오는 메소드
+     * @return
+     */
+    private String getPhoneNumber() {
+        TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+        String phoneNumber = "";
+        try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
+                return "";
+
+            phoneNumber = telephony.getLine1Number();
+            phoneNumber = phoneNumber.replace("+82","0");
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return phoneNumber;
     }
 }
