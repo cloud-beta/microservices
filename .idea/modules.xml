@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PushApp.iml" filepath="$PROJECT_DIR$/.idea/modules/PushApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service_main.iml" group="SurveyPush-Service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service_test.iml" group="SurveyPush-Service" />
+      <module fileurl="file://$PROJECT_DIR$/PushApp/app/app.iml" filepath="$PROJECT_DIR$/PushApp/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/book-service.iml" filepath="$PROJECT_DIR$/.idea/modules/book-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/book-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/book-service_main.iml" group="book-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/book-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/book-service_test.iml" group="book-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/information-service.iml" filepath="$PROJECT_DIR$/.idea/modules/information-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/information-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/information-service_main.iml" group="information-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/information-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/information-service_test.iml" group="information-service" />
+      <module fileurl="file://$PROJECT_DIR$/microservices.iml" filepath="$PROJECT_DIR$/microservices.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service_main.iml" group="survey-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service_test.iml" group="survey-service" />
