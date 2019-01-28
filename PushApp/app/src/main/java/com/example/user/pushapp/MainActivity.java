@@ -3,6 +3,7 @@ package com.example.user.pushapp;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         // PhoneNum을 받아오기 위한 Permission 요청
         ActivityCompat.requestPermissions(this,
-                new String[]{Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_PHONE_STATE},1);
+                new String[]{Manifest.permission.READ_SMS, Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_PHONE_STATE}, 1);
 
     }
 

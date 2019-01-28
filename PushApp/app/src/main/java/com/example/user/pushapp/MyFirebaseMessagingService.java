@@ -40,7 +40,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     /**
      * onNewToken으로 부터 받은 Token 값과 Phone Num을 Server로 보내는 메소드
-     * @param token
+     * @param token onNewToken 콜백 메소드에서 전달받은 token값
      */
     private void sendRegistrationToServer(String token) {
         //핸드폰 번호 가져 오기
@@ -85,17 +85,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        String context = remoteMessage.getData().get("message");
+        String surveyUrl = remoteMessage.getData().get("data");
         // FCM서버로 부터 수신한 메시지중 data라는 키를 가진 값을 꺼내어 메소드로 파라미터로 넘겨준다
-        sendNotification(context);
+        sendNotification(surveyUrl);
     }
 
     /**
      * Android 핸드폰에 알림을 띄워주는 메소드
      *
      */
-    private void sendNotification(String data) {
-        Uri uri = Uri.parse("https://www.naver.com");
+    private void sendNotification(String surveyUrl) {
+        Uri uri = Uri.parse(surveyUrl);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
@@ -107,8 +107,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.mipmap.ic_launcher)
-                        .setContentTitle("FCM Message")
-                        .setContentText(data)
+                        .setContentTitle("Survey")
+                        .setContentText("설문 조사에 응해주세요!")
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
                         .setContentIntent(pendingIntent);
