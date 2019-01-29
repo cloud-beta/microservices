@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PushApp.iml" filepath="$PROJECT_DIR$/.idea/modules/PushApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service_main.iml" group="SurveyPush-Service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SurveyPush-Service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SurveyPush-Service_test.iml" group="SurveyPush-Service" />
