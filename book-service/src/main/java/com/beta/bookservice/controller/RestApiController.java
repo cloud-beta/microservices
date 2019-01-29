@@ -28,7 +28,7 @@ public class RestApiController {
     // -------------------Retrieve All Users---------------------------------------------
 
     @RequestMapping(value = "/books/", method = RequestMethod.GET)
-    public ResponseEntity<List<Phone>> listAllUsers(@RequestParam(value="afterCondition") String bookDateCondition) {
+    public ResponseEntity<List<Phone>> listAllUsers(@RequestParam(value = "afterCondition") String bookDateCondition) {
 
         List<Phone> books = new ArrayList<>();
 
@@ -45,14 +45,14 @@ public class RestApiController {
     }
 
     @RequestMapping(value = "/book/", method = RequestMethod.GET)
-    public ResponseEntity<List<Book>> getBook(@RequestParam(value="phone") Phone phone) {
-        logger.info("Fetching Book with id {}", phone.getPhone());
+    public ResponseEntity<List<Book>> getBook(@RequestParam(value = "phone") String phone) {
+        logger.info("Fetching Book with id {}", phone);
 
-        List<Book> books = bookService.findByPhoneSQL(phone.getPhone());
+        List<Book> books = bookService.findByPhoneSQL(Integer.parseInt(phone));
 
         if (books == null) {
-            logger.error("Book with id {} not found.", phone.getPhone());
-            return new ResponseEntity(new CustomErrorType("Book with id " + phone.getPhone()
+            logger.error("Book with id {} not found.", phone);
+            return new ResponseEntity(new CustomErrorType("Book with id " + phone
                     + " not found"), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<List<Book>>(books, HttpStatus.OK);

@@ -2,20 +2,20 @@ package com.beta.bookservice.model;
 
 public class Phone {
 
-    private int phone;
+    private String phone;
 
     public Phone() {
     }
 
-    public Phone(int phone) {
+    public Phone(String phone) {
         this.phone = phone;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

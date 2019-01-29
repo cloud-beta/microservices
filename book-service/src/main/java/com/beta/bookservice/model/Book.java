@@ -10,7 +10,7 @@ public class Book {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int bookID;
 
-    private int phone;
+    private String phone;
 
     private LocalDateTime bookDate;
 
@@ -20,11 +20,11 @@ public class Book {
 
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

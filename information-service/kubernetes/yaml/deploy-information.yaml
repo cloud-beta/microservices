@@ -16,6 +16,17 @@ spec:
       containers:
         - image: lms8147/restaurant-information-service:0.3
           imagePullPolicy: Always
+          args:
+          - /bin/sh
+          - -c
+          - touch /tmp/healthy
+          livenessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 5
           name: information-service
           ports:
             - containerPort: 8080

@@ -8,14 +8,12 @@ import service.BooksService;
 import service.SurveyPushService;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class ScheduleRun {
 
     public static void main(String[] args) {
-
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://localhost:8080/")
