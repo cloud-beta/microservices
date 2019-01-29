@@ -25,7 +25,7 @@ public class RestApiController {
 
     @RequestMapping(value = "/places/", method = RequestMethod.GET)
     public ResponseEntity<List<Place>> listAllUsers() {
-        Iterable<Place> iterator = infoService.findAll();
+
         List<Place> places = new ArrayList<>();
 
         for (Place place : infoService.findAll()) {

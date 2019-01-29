@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: information-service
+  labels:
+    app: restaurant
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: restaurant
+        tier: information-service
+    spec:
+      containers:
+        - image: lms8147/restaurant-information-service:0.3
+          imagePullPolicy: Always
+          args:
+          - /bin/sh
+          - -c
+          - touch /tmp/healthy
+          livenessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          name: information-service
+          ports:
+            - containerPort: 8080
+          env:
+          - name: DB_HOSTINFO
+            valueFrom:
+              configMapKeyRef:
+                name: db-information
+                key: hostinfo
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-information
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-information
+                key: password
