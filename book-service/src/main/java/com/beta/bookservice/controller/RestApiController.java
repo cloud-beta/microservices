@@ -1,8 +1,6 @@
 package com.beta.bookservice.controller;
 
 import com.beta.bookservice.model.Book;
-import com.beta.bookservice.model.BookDateCondition;
-import com.beta.bookservice.model.Phone;
 import com.beta.bookservice.service.BookService;
 import com.beta.bookservice.util.CustomErrorType;
 import org.slf4j.Logger;
@@ -27,21 +25,52 @@ public class RestApiController {
 
     // -------------------Retrieve All Users---------------------------------------------
 
-    @RequestMapping(value = "/books/", method = RequestMethod.GET)
-    public ResponseEntity<List<Phone>> listAllUsers(@RequestParam(value = "afterCondition") String bookDateCondition) {
+    private final static class BookData{
 
-        List<Phone> books = new ArrayList<>();
+        private String phone;
+        private int placeID;
+
+        public BookData() {
+        }
+
+        public BookData(String phone, int placeID) {
+            this.phone = phone;
+            this.placeID = placeID;
+        }
+
+        public int getPlaceID() {
+            return placeID;
+        }
+
+        public void setPlaceID(int placeID) {
+            this.placeID = placeID;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+    }
+
+    @RequestMapping(value = "/books/", method = RequestMethod.GET)
+    public ResponseEntity<List<BookData>> listAllUsers(@RequestParam(value = "afterCondition") String bookDateCondition) {
+
+        List<BookData> books = new ArrayList<>();
 
         for (Book book : bookService.findByBookDateAfterSQL(LocalDateTime.parse(bookDateCondition)
         )) {
-            books.add(new Phone(book.getPhone()));
+            books.add(new BookData(book.getPhone(), book.getPlaceID()));
         }
 
         if (books.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
             // You many decide to return HttpStatus.NOT_FOUND
         }
-        return new ResponseEntity<List<Phone>>(books, HttpStatus.OK);
+        return new ResponseEntity<List<BookData>>(books, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/book/", method = RequestMethod.GET)

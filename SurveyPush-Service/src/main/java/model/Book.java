@@ -2,6 +2,7 @@ package model;
 
 public class Book {
 
-    public int phone;
+    public String phone;
+    public int placeID;
 
 }
