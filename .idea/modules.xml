@@ -14,6 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/information-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/information-service_main.iml" group="information-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/information-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/information-service_test.iml" group="information-service" />
       <module fileurl="file://$PROJECT_DIR$/microservices.iml" filepath="$PROJECT_DIR$/microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/push-service.iml" filepath="$PROJECT_DIR$/.idea/modules/push-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/push-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/push-service_main.iml" group="push-service" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/push-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/push-service_test.iml" group="push-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service_main.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service_main.iml" group="survey-service" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/survey-service_test.iml" filepath="$PROJECT_DIR$/.idea/modules/survey-service_test.iml" group="survey-service" />
