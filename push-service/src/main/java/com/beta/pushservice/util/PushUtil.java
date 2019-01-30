@@ -6,14 +6,14 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class PushUtil {
-    public static void requestPush(String deviceToken){
+    public static void requestPush(String deviceToken, int placeID){
         OkHttpClient client = new OkHttpClient.Builder().build();
 
         okhttp3.RequestBody body = new FormBody.Builder()
                 .add("to",deviceToken)
                 .add("project_id", PushConstant.SENDER_ID)
                 .add("notification","")
-                .add("data",PushConstant.SURVEY_SERVER_DOMAIN)
+                .add("data",PushConstant.SURVEY_SERVER_DOMAIN + placeID)
                 .build();
 
         Request request = new Request.Builder()
