@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneListModel {
-    private List<Book> phoneList = new ArrayList<Book>();
+    private List<BookModel> phoneList = new ArrayList<BookModel>();
 
     public PhoneListModel(){}
 
-    public PhoneListModel(ArrayList<Book> phoneList) {
+    public PhoneListModel(ArrayList<BookModel> phoneList) {
         this.phoneList = phoneList;
     }
 
-    public List<Book> getPhoneList() {
+    public List<BookModel> getPhoneList() {
         return phoneList;
     }
 
-    public void setPhoneList(ArrayList<Book> phoneList) {
+    public void setPhoneList(ArrayList<BookModel> phoneList) {
         this.phoneList = phoneList;
     }
 }
