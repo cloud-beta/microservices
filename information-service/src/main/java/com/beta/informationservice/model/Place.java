@@ -10,10 +10,10 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int placeID;
+    private long placeID;
     private String name;
 
-    public int getPlaceID() {
+    public long getPlaceID() {
         return placeID;
     }
 

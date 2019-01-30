@@ -1,21 +1,22 @@
 package com.beta.pushservice.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PhoneListModel {
-    private ArrayList<String> phoneList = new ArrayList<String>();
+    private List<Book> phoneList = new ArrayList<Book>();
 
     public PhoneListModel(){}
 
-    public PhoneListModel(ArrayList<String> phoneList) {
+    public PhoneListModel(ArrayList<Book> phoneList) {
         this.phoneList = phoneList;
     }
 
-    public ArrayList<String> getPhoneList() {
+    public List<Book> getPhoneList() {
         return phoneList;
     }
 
-    public void setPhoneList(ArrayList<String> phoneList) {
+    public void setPhoneList(ArrayList<Book> phoneList) {
         this.phoneList = phoneList;
     }
 }

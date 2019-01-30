@@ -15,13 +15,18 @@ public class ScheduleRun {
 
     public static void main(String[] args) {
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/")
+        Retrofit bookServiceRetrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.0.10:8081/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        final BooksService booksService = retrofit.create(BooksService.class);
-        final SurveyPushService surveyPushService = retrofit.create(SurveyPushService.class);
+        Retrofit pushServiceRetrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.0.10:8082/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        final BooksService booksService = bookServiceRetrofit.create(BooksService.class);
+        final SurveyPushService surveyPushService = pushServiceRetrofit.create(SurveyPushService.class);
 /*
         int term_day = Integer.parseInt(System.getenv("TERM_DAY"));
         int term_hour = Integer.parseInt(System.getenv("TERM_HOUR"));
@@ -36,17 +41,32 @@ public class ScheduleRun {
         call.enqueue(new Callback<List<Book>>() {
             @Override
             public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+                /*
                 Call<Void> pushCall = surveyPushService.pushSurvey(response.body());
                 try {
                     pushCall.execute();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                */
+                System.out.println(response.toString());
+                Call<Void> pushCall = surveyPushService.pushSurvey(response.body());
+                pushCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        System.out.println(response.toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        System.out.println(t.toString());
+                    }
+                });
             }
 
             @Override
             public void onFailure(Call<List<Book>> call, Throwable t) {
-
+                System.out.println(t.toString());
             }
         });
     }

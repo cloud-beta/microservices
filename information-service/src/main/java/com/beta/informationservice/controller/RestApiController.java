@@ -1,6 +1,7 @@
 package com.beta.informationservice.controller;
 
 import com.beta.informationservice.model.Place;
+import com.beta.informationservice.model.Restaurant;
 import com.beta.informationservice.service.InfoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class RestApiController {
     // -------------------Retrieve All Users---------------------------------------------
 
     @RequestMapping(value = "/places/", method = RequestMethod.GET)
-    public ResponseEntity<List<Place>> listAllUsers() {
+    public ResponseEntity<List<Place>> listAllRestaurants() {
 
         List<Place> places = new ArrayList<>();
 
@@ -37,6 +38,18 @@ public class RestApiController {
             // You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<Place>>(places, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/place/{restaurantID}", method = RequestMethod.GET)
+    public ResponseEntity<Restaurant> restaurant(@PathVariable("restaurantID") long id) {
+
+        Place restaurant = infoService.findById(id).get();
+
+        if (restaurant == null) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<Restaurant>(new Restaurant(restaurant.getName()), HttpStatus.OK);
     }
 
 }
