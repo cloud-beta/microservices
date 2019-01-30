@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: push-service
+  labels:
+    app: restaurant
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: restaurant
+        tier: push-service
+    spec:
+      containers:
+        - image: lms8147/restaurant-push-service:0.3
+          imagePullPolicy: Always
+          name: push-service
+          ports:
+            - containerPort: 8080
+          env:
+          - name: DB_HOSTINFO
+            valueFrom:
+              configMapKeyRef:
+                name: db-push
+                key: hostinfo
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-push
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-credential-push
+                key: password

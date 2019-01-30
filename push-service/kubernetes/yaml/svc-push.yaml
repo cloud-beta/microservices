@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: information-service
+  name: push-service
   labels:
     app: restaurant
 spec:
@@ -10,7 +10,7 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 8080
-      nodePort: 32011
+      nodePort: 32012
   selector:
     app: restaurant
-    tier: information-service
+    tier: push-service
