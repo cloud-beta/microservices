@@ -21,7 +21,7 @@ public class ScheduleRun {
                 .build();
 
         Retrofit pushServiceRetrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.0.10:8082/")
+                .baseUrl("http://10.0.0.10:8083/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
