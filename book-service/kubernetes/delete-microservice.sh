@@ -1,5 +1,5 @@
 #!/bin/sh
-kubectl delete ConfigMap/db-information
-kubectl delete secret/mariadb-credential-information
-kubectl delete deploy/information-service
-kubectl delete svc/information-service
+kubectl delete ConfigMap/db-book
+kubectl delete secret/mariadb-credential-book
+kubectl delete deploy/book-service
+kubectl delete svc/book-service

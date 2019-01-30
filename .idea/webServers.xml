@@ -2,8 +2,32 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="72b693bc-53ac-4798-95ed-1752422c22a7" name="test" url="http://1.0.0.11">
+      <webServer id="72b693bc-53ac-4798-95ed-1752422c22a7" name="information-service" url="http://1.0.0.11">
         <fileTransfer host="1.0.0.11" port="22" rootFolder="/root/information-service" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="7ed3adef-32eb-4d01-89dd-f07447335292" name="book-service" url="http://1.0.0.11">
+        <fileTransfer host="1.0.0.11" port="22" rootFolder="/root/book-service" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="80841e0c-40da-4b85-afb3-bc5e45a532a4" name="push-service" url="http://1.0.0.11">
+        <fileTransfer host="1.0.0.11" port="22" rootFolder="/root/push-service" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="39638090-e04d-4eca-8497-e43b0faf3b4e" name="surveyPush-service" url="http://1.0.0.11">
+        <fileTransfer host="1.0.0.11" port="22" rootFolder="/root/surveyPush-service" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
           </advancedOptions>
