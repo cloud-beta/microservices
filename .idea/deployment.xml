@@ -2,11 +2,35 @@
 <project version="4">
   <component name="PublishConfigData" serverName="test">
     <serverData>
-      <paths name="test">
+      <paths name="book-service">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/out" local="$PROJECT_DIR$/book-service/build/libs" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/book-service/kubernetes" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="information-service">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$/SurveyPush-Service" web="/" />
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="push-service">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/out" local="$PROJECT_DIR$/push-service/build/libs" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/push-service/kubernetes" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="surveyPush-service">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/out" local="$PROJECT_DIR$/SurveyPush-Service/build/libs" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/SurveyPush-Service/kubernetes" />
           </mappings>
         </serverdata>
       </paths>
