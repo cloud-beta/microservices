@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="test">
     <serverData>
       <paths name="test">
         <serverdata>
           <mappings>
-            <mapping deploy="/out" local="$PROJECT_DIR$/information-service/build/libs" web="/" />
-            <mapping deploy="/" local="$PROJECT_DIR$/information-service/kubernetes" />
+            <mapping local="$PROJECT_DIR$/SurveyPush-Service" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

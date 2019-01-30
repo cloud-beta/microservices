@@ -39,10 +39,9 @@ public class TokenController {
         //각 번호 4자리 검증
         if (StringUtils.isEmpty(phone))
             throw new IllegalArgumentException("Phone Number is Empty!");
-        /*
         if (phone.length() != 11)
             throw new IllegalArgumentException("Phone Number must be eleven length");
-*/
+
         //token 값 검증
         if (StringUtils.isEmpty(tokenModel.getToken()))
             throw new IllegalArgumentException("Token is Empty");
