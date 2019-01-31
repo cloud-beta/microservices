@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: schedule
-            image: lms8147/lms8147/restaurant-survey-push-service:0.3
+            image: cloudbeta/restaurant-survey-push-service:0.1
             env:
             - name: TERM_DAY
               valueFrom:

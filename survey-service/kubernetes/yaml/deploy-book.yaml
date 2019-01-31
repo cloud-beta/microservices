@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: book-service
+  name: survey-service
   labels:
     app: restaurant
 spec:
@@ -11,14 +11,14 @@ spec:
     metadata:
       labels:
         app: restaurant
-        tier: book-service
+        tier: survey-service
     spec:
       containers:
-        - image: cloudbeta/restaurant-book-service:0.1
+        - image: cloudbeta/:0.1
           imagePullPolicy: Always
-          name: book-service
+          name: survey-service
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           env:
           - name: DB_HOSTINFO
             valueFrom:

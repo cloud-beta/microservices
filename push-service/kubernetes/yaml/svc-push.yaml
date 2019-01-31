@@ -10,7 +10,7 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 8080
-      nodePort: 32012
+      nodePort: 32002
   selector:
     app: restaurant
     tier: push-service

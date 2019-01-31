@@ -19,7 +19,7 @@ spec:
         tier: information-service
     spec:
       containers:
-        - image: lms8147/restaurant-information-service:0.5
+        - image: cloudbeta/restaurant-information-service:0.1
           imagePullPolicy: Always
           name: information-service
           ports:

@@ -14,7 +14,7 @@ spec:
         tier: push-service
     spec:
       containers:
-        - image: lms8147/restaurant-push-service:0.3
+        - image: cloudbeta/restaurant-push-service:0.1
           imagePullPolicy: Always
           name: push-service
           ports:
