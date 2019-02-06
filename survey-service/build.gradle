@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-rest'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.mariadb.jdbc:mariadb-java-client:2.3.0'
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.11.491'
+    implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
